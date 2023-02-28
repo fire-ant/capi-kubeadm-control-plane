@@ -10,3 +10,6 @@ webhookService:
   - port: 443
     targetPort: webhook-server
   type: ClusterIP
+providerArgs:
+  clusterTopology: false
+  kubeadmBootstrapFormatIgnition: false

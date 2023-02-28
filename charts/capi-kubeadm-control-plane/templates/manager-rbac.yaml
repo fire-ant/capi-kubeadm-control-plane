@@ -1,11 +1,11 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: {{ include "control-plane.fullname" . }}-manager-role
+  name: {{ include "capi-kubeadm-control-plane.fullname" . }}-manager-role
   labels:
     cluster.x-k8s.io/provider: control-plane-kubeadm
     kubeadm.controlplane.cluster.x-k8s.io/aggregate-to-manager: "true"
-  {{- include "control-plane.labels" . | nindent 4 }}
+  {{- include "capi-kubeadm-control-plane.labels" . | nindent 4 }}
 rules:
 - apiGroups:
   - apiextensions.k8s.io
@@ -76,15 +76,15 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: {{ include "control-plane.fullname" . }}-manager-rolebinding
+  name: {{ include "capi-kubeadm-control-plane.fullname" . }}-manager-rolebinding
   labels:
     cluster.x-k8s.io/provider: control-plane-kubeadm
-  {{- include "control-plane.labels" . | nindent 4 }}
+  {{- include "capi-kubeadm-control-plane.labels" . | nindent 4 }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: '{{ include "control-plane.fullname" . }}-aggregated-manager-role'
+  name: '{{ include "capi-kubeadm-control-plane.fullname" . }}-aggregated-manager-role'
 subjects:
 - kind: ServiceAccount
-  name: '{{ include "control-plane.fullname" . }}-manager'
+  name: '{{ include "capi-kubeadm-control-plane.fullname" . }}-manager'
   namespace: '{{ .Release.Namespace }}'

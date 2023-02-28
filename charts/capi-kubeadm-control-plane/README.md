@@ -12,6 +12,8 @@ A Helm Chart for the cluster-api control-plane provider
 | controllerManager.manager.image.tag | string | `"v1.3.3"` |  |
 | controllerManager.replicas | int | `1` |  |
 | kubernetesClusterDomain | string | `"cluster.local"` |  |
+| providerArgs.clusterTopology | bool | `false` |  |
+| providerArgs.kubeadmBootstrapFormatIgnition | bool | `false` |  |
 | webhookService.ports[0].port | int | `443` |  |
 | webhookService.ports[0].targetPort | string | `"webhook-server"` |  |
 | webhookService.type | string | `"ClusterIP"` |  |

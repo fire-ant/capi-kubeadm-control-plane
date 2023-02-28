@@ -1,38 +1,38 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: {{ include "control-plane.fullname" . }}-manager
+  name: {{ include "capi-kubeadm-control-plane.fullname" . }}-manager
   labels:
     cluster.x-k8s.io/provider: control-plane-kubeadm
-  {{- include "control-plane.labels" . | nindent 4 }}
+  {{- include "capi-kubeadm-control-plane.labels" . | nindent 4 }}
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "control-plane.fullname" . }}-controller-manager
+  name: {{ include "capi-kubeadm-control-plane.fullname" . }}-controller-manager
   labels:
     cluster.x-k8s.io/provider: control-plane-kubeadm
     control-plane: controller-manager
-  {{- include "control-plane.labels" . | nindent 4 }}
+  {{- include "capi-kubeadm-control-plane.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.controllerManager.replicas }}
   selector:
     matchLabels:
       cluster.x-k8s.io/provider: control-plane-kubeadm
       control-plane: controller-manager
-    {{- include "control-plane.selectorLabels" . | nindent 6 }}
+    {{- include "capi-kubeadm-control-plane.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
         cluster.x-k8s.io/provider: control-plane-kubeadm
         control-plane: controller-manager
-      {{- include "control-plane.selectorLabels" . | nindent 8 }}
+      {{- include "capi-kubeadm-control-plane.selectorLabels" . | nindent 8 }}
     spec:
       containers:
       - args:
         - --leader-elect
         - --metrics-bind-addr=localhost:8080
-        - --feature-gates=ClusterTopology=${CLUSTER_TOPOLOGY:=false},KubeadmBootstrapFormatIgnition=${EXP_KUBEADM_BOOTSTRAP_FORMAT_IGNITION:=false}
+        - --feature-gates=ClusterTopology={{- default false .Values.providerArgs.clusterTopology }},KubeadmBootstrapFormatIgnition={{- default false .Values.providerArgs.kubeadmBootstrapFormatIgnition }}
         command:
         - /manager
         env:
@@ -74,7 +74,7 @@ spec:
         - mountPath: /tmp/k8s-webhook-server/serving-certs
           name: cert
           readOnly: true
-      serviceAccountName: {{ include "control-plane.fullname" . }}-manager
+      serviceAccountName: {{ include "capi-kubeadm-control-plane.fullname" . }}-manager
       terminationGracePeriodSeconds: 10
       tolerations:
       - effect: NoSchedule
