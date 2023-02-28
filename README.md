@@ -1,5 +1,12 @@
-### CAPI CAPMVM Infrastucture Provider Chart
+### CAPI CLUSTER-API Infrastucture Provider Chart
 
-see https://github.com/weaveworks-liquidmetal/cluster-api-provider-microvm
+This chart is derived from a components provider of the [Cluster API](https://cluster-api.sigs.k8s.io) project 
 
-for Chart Values see [here](charts/capmvm/README.md)
+see https://github.com/kubernetes-sigs/cluster-api
+
+### Values
+for Chart Values see [here](charts/capi-kubeadm-control-plane/README.md)
+
+#### Notes
+
+Note that Chart releases correlate image versions with CRDs and as such may need to upgrade/replace CRD versions over time.
