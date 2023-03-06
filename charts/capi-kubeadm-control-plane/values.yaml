@@ -7,9 +7,9 @@ controllerManager:
 kubernetesClusterDomain: cluster.local
 webhookService:
   ports:
-  - port: 443
-    targetPort: webhook-server
+    - port: 443
+      targetPort: webhook-server
   type: ClusterIP
-providerArgs:
-  clusterTopology: false
-  kubeadmBootstrapFormatIgnition: false
+featureGates:
+  ClusterTopology: false
+  KubeadmBootstrapFormatIgnition: false
