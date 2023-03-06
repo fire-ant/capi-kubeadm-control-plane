@@ -30,6 +30,19 @@ entries:
     version: 0.1.1
   capi-kubeadm-control-plane:
   - apiVersion: v2
+    appVersion: v1.4.0-beta.1
+    created: "2023-03-06T10:30:46.139944838Z"
+    description: A Helm Chart for the kubernetes-sigs/cluster-api
+    digest: 53e1c02f65778859425a5f09e42d3944ce230b1aecea9423dea5add41128f33e
+    maintainers:
+    - email: chris@weave.works
+      name: chris
+    name: capi-kubeadm-control-plane
+    type: application
+    urls:
+    - https://github.com/fire-ant/capi-kubeadm-control-plane/releases/download/capi-kubeadm-control-plane-v1.4.0-beta.1/capi-kubeadm-control-plane-v1.4.0-beta.1.tgz
+    version: v1.4.0-beta.1
+  - apiVersion: v2
     appVersion: v1.3.4
     created: "2023-03-06T00:20:54.284594699Z"
     description: A Helm Chart for the kubernetes-sigs/cluster-api
@@ -587,4 +600,4 @@ entries:
     urls:
     - https://github.com/helm/charts-repo-actions-demo/releases/download/example-v2-0.2.2/example-v2-0.2.2.tgz
     version: 0.2.2
-generated: "2023-03-06T00:20:54.284650401Z"
+generated: "2023-03-06T10:30:46.140002039Z"
