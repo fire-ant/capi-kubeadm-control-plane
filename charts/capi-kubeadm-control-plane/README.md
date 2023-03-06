@@ -1,6 +1,6 @@
 # capi-kubeadm-control-plane
 
-![Version: v1.3.3](https://img.shields.io/badge/Version-v1.3.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.3.3](https://img.shields.io/badge/AppVersion-v1.3.3-informational?style=flat-square)
+![Version: v1.3.4](https://img.shields.io/badge/Version-v1.3.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.3.4](https://img.shields.io/badge/AppVersion-v1.3.4-informational?style=flat-square)
 
 A Helm Chart for the kubernetes-sigs/cluster-api
 
@@ -15,7 +15,7 @@ A Helm Chart for the kubernetes-sigs/cluster-api
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | controllerManager.manager.image.repository | string | `"registry.k8s.io/cluster-api/kubeadm-control-plane-controller"` |  |
-| controllerManager.manager.image.tag | string | `"v1.3.3"` |  |
+| controllerManager.manager.image.tag | string | `"v1.3.4"` |  |
 | controllerManager.replicas | int | `1` |  |
 | featureGates.ClusterTopology | bool | `false` |  |
 | featureGates.KubeadmBootstrapFormatIgnition | bool | `false` |  |
