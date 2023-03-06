@@ -32,7 +32,9 @@ spec:
       - args:
         - --leader-elect
         - --metrics-bind-addr=localhost:8080
-        - --feature-gates=ClusterTopology={{- default false .Values.providerArgs.clusterTopology }},KubeadmBootstrapFormatIgnition={{- default false .Values.providerArgs.kubeadmBootstrapFormatIgnition }}
+        - --feature-gates=ClusterTopology={{- default false .Values.featureGates.ClusterTopology
+          }},KubeadmBootstrapFormatIgnition={{- default false .Values.featureGates.KubeadmBootstrapFormatIgnition
+          }}
         command:
         - /manager
         env:
