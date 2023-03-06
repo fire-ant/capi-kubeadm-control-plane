@@ -2,7 +2,7 @@ controllerManager:
   manager:
     image:
       repository: registry.k8s.io/cluster-api/kubeadm-control-plane-controller
-      tag: v1.3.4
+      tag: v1.3.3
   replicas: 1
 kubernetesClusterDomain: cluster.local
 webhookService:
