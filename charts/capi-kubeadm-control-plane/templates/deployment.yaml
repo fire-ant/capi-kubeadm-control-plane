@@ -72,10 +72,22 @@ spec:
             path: /readyz
             port: healthz
         resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          privileged: false
+          runAsGroup: 65532
+          runAsUser: 65532
         volumeMounts:
         - mountPath: /tmp/k8s-webhook-server/serving-certs
           name: cert
           readOnly: true
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
       serviceAccountName: {{ include "capi-kubeadm-control-plane.fullname" . }}-manager
       terminationGracePeriodSeconds: 10
       tolerations:
