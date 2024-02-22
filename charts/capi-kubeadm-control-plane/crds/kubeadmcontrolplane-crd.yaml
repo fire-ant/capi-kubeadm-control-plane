@@ -3,10 +3,9 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     cert-manager.io/inject-ca-from: capi-kubeadm-control-plane-system/capi-kubeadm-control-plane-serving-cert
-    controller-gen.kubebuilder.io/version: v0.11.3
+    controller-gen.kubebuilder.io/version: v0.13.0
   labels:
     cluster.x-k8s.io/provider: control-plane-kubeadm
-    cluster.x-k8s.io/v1alpha3: v1alpha3
     cluster.x-k8s.io/v1alpha4: v1alpha4
     cluster.x-k8s.io/v1beta1: v1beta1
   name: kubeadmcontrolplanes.controlplane.cluster.x-k8s.io
@@ -67,6 +66,7 @@ spec:
       jsonPath: .status.unavailableReplicas
       name: Unavailable
       type: integer
+    deprecated: true
     name: v1alpha3
     schema:
       openAPIV3Schema:
@@ -1200,7 +1200,7 @@ spec:
                 type: integer
             type: object
         type: object
-    served: true
+    served: false
     storage: false
     subresources:
       scale:
@@ -1244,6 +1244,7 @@ spec:
       jsonPath: .status.unavailableReplicas
       name: Unavailable
       type: integer
+    deprecated: true
     name: v1alpha4
     schema:
       openAPIV3Schema:
@@ -2411,7 +2412,7 @@ spec:
                 type: string
             type: object
         type: object
-    served: true
+    served: false
     storage: false
     subresources:
       scale:
@@ -3647,7 +3648,7 @@ spec:
                       M1-1 is created as a replacement. If M1-1 (replacement of M1)
                       has problems while bootstrapping it will become unhealthy, and
                       then be remediated; such operation is considered a retry, remediation-retry
-                      #1. If M1-2 (replacement of M1-2) becomes unhealthy, remediation-retry
+                      #1. If M1-2 (replacement of M1-1) becomes unhealthy, remediation-retry
                       #2 will happen, etc. \n A retry could happen only after RetryPeriod
                       from the previous retry. If a machine is marked as unhealthy
                       after MinHealthyPeriod from the previous remediation expired,
@@ -3686,9 +3687,11 @@ spec:
                 format: int32
                 type: integer
               rolloutAfter:
-                description: RolloutAfter is a field to indicate a rollout should
+                description: 'RolloutAfter is a field to indicate a rollout should
                   be performed after the specified time even if no changes have been
-                  made to the KubeadmControlPlane.
+                  made to the KubeadmControlPlane. Example: In the YAML the time can
+                  be specified in the RFC3339 format. To specify the rolloutAfter
+                  target as March 9, 2023, at 9 am UTC use "2023-03-09T09:00:00Z".'
                 format: date-time
                 type: string
               rolloutBefore:
